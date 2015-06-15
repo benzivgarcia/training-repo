@@ -1,0 +1,101 @@
+/*This program will perform Stack-PushPop Operation
+ *Created: Ben Ziv
+ *Training purposes
+ *LANG: C++ 11
+ *Compiled: GCC, Dev-C++ 5.11 (IDE)
+*/
+
+#include <iostream>
+using namespace std;
+const int MAX = 5;
+int stack[MAX], top = -1, data;
+
+/*Function Prototype
+ *Needed if functions are called prior to definition
+*/
+void Push();
+void Pop();
+void Display();
+void Invalid();
+
+int main(int argc, char** argv) {
+	int selectedMenu=0;
+	while(1)
+	{
+		//display menu
+		system("cls");
+		cout<<"PushPop C++ Program\n\nChoose an action:"<< endl;
+		cout<<"(1)Push\n(2)Pop\n(3)Display\n(4)Exit"<<endl;
+		cin >> selectedMenu;
+		
+		switch(selectedMenu)
+		{
+			case 1:
+				Push();
+				break;
+			case 2:
+				Pop();
+				break;
+			case 3:
+				Display();
+				break;
+			case 4:
+				exit(0);			
+			default:
+				Invalid();
+				break;
+		}
+	}
+	return 0;
+}
+
+void Push()
+{
+	if(top<5)
+	{
+		top++;
+		cout<<"\nData to input (stack["<<top<<"]): ";
+		cin>>data;	
+		stack[top] = data;
+	}
+	else
+	{
+		cout<<"\nYou exceeded to maximum stack size"<<endl;
+		system("pause");
+	}
+}
+void Pop()
+{
+	if(top!=-1)
+	{
+		cout<<"\nValue @ stack["<<top<<"] "<<stack[top]<<" is deleted"<<endl;
+		top--;
+		system("pause");
+	}
+	else
+	{
+		cout<<"\nNo more data on stack"<<endl;	
+		system("pause");
+	}
+}
+void Display()
+{
+	if(top!=-1)
+	{
+		cout<<"\nData in Stack:\n";	
+		for(int i=top; i>=0; i--)
+		{
+			cout<<stack[i]<<endl;
+		}
+		system("pause");
+	}
+	else
+	{
+		cout<<"\nNo data on stack"<<endl;	
+		system("pause");
+	}
+}
+void Invalid()
+{
+	cout<<"\nInvalid Menu Selection"<<endl;
+}
